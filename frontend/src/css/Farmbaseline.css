@@ -1,0 +1,399 @@
+/* =========================================
+   Farm Baseline
+========================================= */
+
+.baseline-page {
+  min-height: calc(100vh - 76px);
+
+  padding: 60px 20px 90px;
+
+  background: #f6f9f6;
+}
+
+.baseline-container {
+  width: min(900px, 100%);
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   Header
+========================================= */
+
+.baseline-header {
+  margin-bottom: 35px;
+}
+
+.baseline-label {
+  color: #598061;
+
+  font-size: 9px;
+
+  font-weight: 750;
+
+  letter-spacing: 1.5px;
+}
+
+.baseline-header h1 {
+  margin: 8px 0;
+
+  color: #21452d;
+
+  font-size: 38px;
+
+  line-height: 1.1;
+
+  letter-spacing: -1.4px;
+}
+
+.baseline-header p {
+  max-width: 620px;
+
+  margin: 0;
+
+  color: #7b887f;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   Form
+========================================= */
+
+.baseline-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   Card
+========================================= */
+
+.baseline-card {
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e9e3;
+
+  border-radius: 13px;
+
+  box-shadow: 0 5px 18px rgba(31, 67, 42, 0.035);
+}
+
+.baseline-card-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 22px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #edf1ed;
+}
+
+.baseline-card-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #eaf4ec;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+}
+
+.baseline-card-header h2 {
+  margin: 0 0 3px;
+
+  color: #294c34;
+
+  font-size: 14px;
+}
+
+.baseline-card-header p {
+  margin: 0;
+
+  color: #89948c;
+
+  font-size: 9px;
+}
+
+
+/* =========================================
+   Grid
+========================================= */
+
+.baseline-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+}
+
+
+/* =========================================
+   Fields
+========================================= */
+
+.baseline-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.baseline-field label {
+  color: #405247;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+.baseline-field input,
+.baseline-field select,
+.baseline-field textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #dce5de;
+
+  border-radius: 8px;
+
+  background: #fbfcfb;
+
+  color: #405247;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.baseline-field input,
+.baseline-field select {
+  height: 40px;
+
+  padding: 0 12px;
+}
+
+.baseline-field textarea {
+  min-height: 120px;
+
+  padding: 11px 12px;
+
+  resize: vertical;
+}
+
+.baseline-field input::placeholder,
+.baseline-field textarea::placeholder {
+  color: #a3aca5;
+}
+
+.baseline-field input:focus,
+.baseline-field select:focus,
+.baseline-field textarea:focus {
+  border-color: #6a9b73;
+
+  background: #ffffff;
+
+  box-shadow: 0 0 0 3px rgba(82, 133, 91, 0.08);
+}
+
+
+/* =========================================
+   Unit Input
+========================================= */
+
+.baseline-unit-input {
+  position: relative;
+}
+
+.baseline-unit-input input {
+  padding-right: 75px;
+}
+
+.baseline-unit-input span {
+  position: absolute;
+
+  top: 50%;
+
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  color: #89948c;
+
+  font-size: 8px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   Notice
+========================================= */
+
+.baseline-notice {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 14px 16px;
+
+  border: 1px solid #dce9de;
+
+  border-radius: 10px;
+
+  background: #f0f7f1;
+}
+
+.baseline-notice > span {
+  color: #4d8058;
+
+  font-size: 13px;
+}
+
+.baseline-notice p {
+  margin: 0;
+
+  color: #6f8073;
+
+  font-size: 9px;
+
+  line-height: 1.7;
+}
+
+.baseline-notice strong {
+  color: #456c4d;
+}
+
+
+/* =========================================
+   Actions
+========================================= */
+
+.baseline-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  padding-top: 5px;
+}
+
+.baseline-primary-button,
+.baseline-secondary-button {
+  height: 40px;
+
+  padding: 0 18px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.baseline-primary-button {
+  border: 1px solid #285f3a;
+
+  background: #285f3a;
+
+  color: #ffffff;
+}
+
+.baseline-primary-button:hover {
+  background: #20532f;
+
+  border-color: #20532f;
+
+  transform: translateY(-1px);
+}
+
+.baseline-secondary-button {
+  border: 1px solid #dce5de;
+
+  background: #ffffff;
+
+  color: #526159;
+}
+
+.baseline-secondary-button:hover {
+  background: #f0f6f1;
+
+  border-color: #c5d4c8;
+}
+
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 600px) {
+
+  .baseline-page {
+    padding: 45px 15px 70px;
+  }
+
+  .baseline-header h1 {
+    font-size: 32px;
+  }
+
+  .baseline-card {
+    padding: 18px;
+  }
+
+  .baseline-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .baseline-actions {
+    flex-direction: column-reverse;
+  }
+
+  .baseline-primary-button,
+  .baseline-secondary-button {
+    width: 100%;
+  }
+}
