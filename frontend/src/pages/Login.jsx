@@ -1,7 +1,74 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.jsx";
 import "../css/Login.css";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    setError("");
+
+    // Frontend validation
+    if (!email || !password) {
+      setError("Please enter your email and password.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      // Send login request to backend
+      const response = await fetch(
+        "http://localhost:5000/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      // Backend returned an error
+      if (!response.ok) {
+        setError(data.message || "Invalid email or password.");
+        return;
+      }
+
+      // Save authenticated user and JWT
+      // Remember Me decides localStorage vs sessionStorage
+      login(data.user, data.token, rememberMe);
+
+      // Go to dashboard
+      navigate("/dashboard");
+
+    } catch (error) {
+      console.error("Login error:", error);
+
+      setError(
+        "Unable to connect to the server. Please try again."
+      );
+
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="auth-page">
 
@@ -88,7 +155,7 @@ const Login = () => {
 
             <form
               className="auth-form"
-              onSubmit={(event) => event.preventDefault()}
+              onSubmit={handleSubmit}
             >
 
               <div className="form-field">
@@ -101,6 +168,10 @@ const Login = () => {
                   id="login-email"
                   type="email"
                   placeholder="you@example.com"
+                  value={email}
+                  onChange={(event) =>
+                    setEmail(event.target.value)
+                  }
                 />
 
               </div>
@@ -109,22 +180,21 @@ const Login = () => {
               <div className="form-field">
 
                 <div className="form-label-row">
+
                   <label htmlFor="login-password">
                     Password
                   </label>
 
-                  <button
-                    type="button"
-                    className="forgot-password"
-                  >
-                    Forgot password?
-                  </button>
                 </div>
 
                 <input
                   id="login-password"
                   type="password"
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(event) =>
+                    setPassword(event.target.value)
+                  }
                 />
 
               </div>
@@ -134,6 +204,10 @@ const Login = () => {
 
                 <input
                   type="checkbox"
+                  checked={rememberMe}
+                  onChange={(event) =>
+                    setRememberMe(event.target.checked)
+                  }
                 />
 
                 <span>
@@ -143,12 +217,21 @@ const Login = () => {
               </label>
 
 
+              {error && (
+                <p className="auth-error">
+                  {error}
+                </p>
+              )}
+
+
               <button
                 type="submit"
                 className="auth-submit-button"
+                disabled={loading}
               >
-                Log In
-                <span>→</span>
+                {loading ? "Logging In..." : "Log In"}
+
+                {!loading && <span>→</span>}
               </button>
 
             </form>
@@ -173,7 +256,8 @@ const Login = () => {
 
 
             <p className="auth-demo-note">
-              Demo interface — account data is not currently saved.
+              Your account is securely stored in the
+              CropShield database.
             </p>
 
           </div>
