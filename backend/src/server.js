@@ -4,8 +4,11 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
+import path from "node:path";
 import authRoutes from "./routes/authRoutes.js";
 import authMiddleware from "./middleware/authMiddleware.js";
+import farmBaselineRoutes from "./routes/farmBaselineRoutes.js";
+import cropLossRoutes from "./routes/cropLossRoutes.js";
 
 import connectDB from "./config/db.js";
 
@@ -21,8 +24,11 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-app.use(express.json());
+app.use(express.json({ limit: "12mb" }));
+app.use("/uploads", express.static(path.resolve(process.cwd(), "uploads")));
 app.use("/api/auth", authRoutes);
+app.use("/api/farm-baseline", farmBaselineRoutes);
+app.use("/api/crop-losses", cropLossRoutes);
 
 // =====================================
 // Database

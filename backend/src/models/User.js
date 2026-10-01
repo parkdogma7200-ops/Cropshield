@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       trim: true,
+      match: [
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        "Please provide a valid email address.",
+      ],
     },
 
     password: {
@@ -58,20 +62,6 @@ const userSchema = new mongoose.Schema(
       default: "",
       trim: true,
     },
-
-    // =====================================
-    // Password Reset
-    // =====================================
-
-    resetPasswordToken: {
-      type: String,
-      default: null,
-    },
-
-    resetPasswordExpires: {
-      type: Date,
-      default: null,
-    },
   },
   {
     timestamps: true,
@@ -81,3 +71,4 @@ const userSchema = new mongoose.Schema(
 const User = mongoose.model("User", userSchema);
 
 export default User;
+
