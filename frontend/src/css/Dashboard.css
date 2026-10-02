@@ -833,3 +833,210 @@
   }
 
 }
+
+/* =========================================
+   CropShield Dashboard - Dark Mode
+========================================= */
+
+:root[data-theme="dark"] .dashboard-page {
+  background: #101712;
+}
+
+:root[data-theme="dark"] .dashboard-label {
+  color: #7fa98a;
+}
+
+:root[data-theme="dark"] .dashboard-header h1 {
+  color: #e8f2ea;
+}
+
+:root[data-theme="dark"] .dashboard-header p {
+  color: #9aa99e;
+}
+
+/* Primary Button */
+
+:root[data-theme="dark"] .dashboard-primary-button {
+  background: #3d7650;
+  border-color: #4b895d;
+}
+
+:root[data-theme="dark"] .dashboard-primary-button:hover {
+  background: #4b895d;
+}
+
+/* Statistics */
+
+:root[data-theme="dark"] .dashboard-stat-card {
+  background: #18221b;
+  border-color: #2b382e;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"] .stat-icon {
+  background: #22372a;
+}
+
+:root[data-theme="dark"] .stat-label {
+  color: #899b8f;
+}
+
+:root[data-theme="dark"] .stat-content strong {
+  color: #dceade;
+}
+
+:root[data-theme="dark"] .stat-description {
+  color: #849288;
+}
+
+/* Main Cards */
+
+:root[data-theme="dark"] .dashboard-card {
+  background: #18221b;
+  border-color: #2b382e;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"] .dashboard-card-header {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .dashboard-card-header h2 {
+  color: #dceade;
+}
+
+:root[data-theme="dark"] .dashboard-card-header p {
+  color: #899b8f;
+}
+
+:root[data-theme="dark"] .card-period {
+  background: #22372a;
+  color: #91b49a;
+}
+
+/* Chart */
+
+:root[data-theme="dark"] .chart-y-axis span {
+  color: #7f8e84;
+}
+
+:root[data-theme="dark"] .chart-area {
+  border-left-color: #2b382e;
+  border-bottom-color: #344238;
+}
+
+:root[data-theme="dark"] .chart-grid-line {
+  background: #29362d;
+}
+
+:root[data-theme="dark"] .chart-bar {
+  background: #6f9f78;
+}
+
+:root[data-theme="dark"] .chart-column > span {
+  color: #849288;
+}
+
+/* Quick Actions */
+
+:root[data-theme="dark"] .quick-action {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .quick-action:hover {
+  background: #1d2a20;
+}
+
+:root[data-theme="dark"] .quick-action-icon {
+  background: #22372a;
+}
+
+:root[data-theme="dark"] .quick-action strong {
+  color: #c9d8cd;
+}
+
+:root[data-theme="dark"] .quick-action small {
+  color: #849288;
+}
+
+:root[data-theme="dark"] .action-arrow {
+  color: #849288;
+}
+
+/* Recent Reports */
+
+:root[data-theme="dark"] .recent-report {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .recent-report-icon {
+  background: #22372a;
+}
+
+:root[data-theme="dark"] .recent-report-info strong {
+  color: #c9d8cd;
+}
+
+:root[data-theme="dark"] .recent-report-info span {
+  color: #849288;
+}
+
+:root[data-theme="dark"] .recent-report-loss strong {
+  color: #c89468;
+}
+
+:root[data-theme="dark"] .recent-report-loss span {
+  color: #849288;
+}
+
+:root[data-theme="dark"] .recent-reports-card .dashboard-card-header a {
+  color: #81a88a;
+}
+
+:root[data-theme="dark"] .recent-reports-card .dashboard-card-header a:hover {
+  color: #a0c4a8;
+}
+
+/* Farm Status */
+
+:root[data-theme="dark"] .farm-status-icon {
+  background: #22372a;
+}
+
+:root[data-theme="dark"] .farm-status-content h3 {
+  color: #c9d8cd;
+}
+
+:root[data-theme="dark"] .farm-status-content p {
+  color: #899b8f;
+}
+
+:root[data-theme="dark"] .farm-status-button {
+  background: #18221b;
+  border-color: #35443a;
+  color: #a8c0ad;
+}
+
+:root[data-theme="dark"] .farm-status-button:hover {
+  background: #22372a;
+  border-color: #4a6250;
+}
+
+/* Demo Notice */
+
+:root[data-theme="dark"] .dashboard-notice {
+  background: #1b2c20;
+  border-color: #304936;
+}
+
+:root[data-theme="dark"] .dashboard-notice > span {
+  color: #78a981;
+}
+
+:root[data-theme="dark"] .dashboard-notice p {
+  color: #93a69a;
+}
+
+:root[data-theme="dark"] .dashboard-notice strong {
+  color: #a8c5ae;
+}

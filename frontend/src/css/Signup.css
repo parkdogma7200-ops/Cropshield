@@ -557,3 +557,181 @@
     margin-bottom: 30px;
   }
 }
+
+/* =========================================
+   Dark Mode - Signup Page
+========================================= */
+
+:root[data-theme="dark"] .signup-page {
+  background: #101712;
+}
+
+:root[data-theme="dark"] .signup-form-side {
+  background: #121a15;
+}
+
+:root[data-theme="dark"] .signup-label {
+  color: #7fa98a;
+}
+
+:root[data-theme="dark"] .signup-form-header h1 {
+  color: #e8f2ea;
+}
+
+:root[data-theme="dark"] .signup-form-header p {
+  color: #929f96;
+}
+
+:root[data-theme="dark"] .signup-field label {
+  color: #c1d0c5;
+}
+
+:root[data-theme="dark"] .signup-field input {
+  border-color: #35443a;
+  background: #0f1712;
+  color: #d7e4da;
+}
+
+:root[data-theme="dark"] .signup-field input::placeholder {
+  color: #718078;
+}
+
+:root[data-theme="dark"] .signup-field input:focus {
+  border-color: #6a9b73;
+  background: #18221b;
+  box-shadow: 0 0 0 3px rgba(106, 155, 115, 0.12);
+}
+
+:root[data-theme="dark"] .signup-terms {
+  color: #89998f;
+}
+
+:root[data-theme="dark"] .signup-terms input {
+  accent-color: #6fa078;
+}
+
+:root[data-theme="dark"] .signup-error {
+  color: #d18a8a;
+}
+
+:root[data-theme="dark"] .signup-submit-button {
+  background: #3d7650;
+  box-shadow: 0 7px 17px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .signup-submit-button:hover {
+  background: #4b895d;
+  box-shadow: 0 9px 20px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme="dark"] .signup-divider::before,
+:root[data-theme="dark"] .signup-divider::after {
+  background: #2b382e;
+}
+
+:root[data-theme="dark"] .signup-divider span {
+  color: #718078;
+}
+
+:root[data-theme="dark"] .signup-login-switch p {
+  color: #89988e;
+}
+
+:root[data-theme="dark"] .signup-login-switch a {
+  color: #82ad8b;
+}
+
+:root[data-theme="dark"] .signup-login-switch a:hover {
+  color: #a8c5ae;
+}
+
+:root[data-theme="dark"] .signup-demo-note {
+  color: #718078;
+}
+
+/* =========================================
+   Brand Side
+========================================= */
+
+:root[data-theme="dark"] .signup-brand-side {
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(107, 157, 114, 0.18),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #14251a,
+      #1d3b26
+    );
+}
+
+:root[data-theme="dark"] .signup-brand-label {
+  color: #9fc0a6;
+}
+
+:root[data-theme="dark"] .signup-brand-content h2 {
+  color: #edf6ef;
+}
+
+:root[data-theme="dark"] .signup-brand-content h2 span {
+  color: #91bd99;
+}
+
+:root[data-theme="dark"] .signup-brand-content > p {
+  color: #b5c8ba;
+}
+
+:root[data-theme="dark"] .signup-logo {
+  color: #edf6ef;
+}
+
+:root[data-theme="dark"] .signup-preview {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .signup-preview-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  color: #9fbea5;
+}
+
+:root[data-theme="dark"] .signup-preview-status {
+  color: #a9d0ae;
+}
+
+:root[data-theme="dark"] .signup-preview-icon {
+  background: rgba(170, 205, 177, 0.12);
+}
+
+:root[data-theme="dark"] .signup-preview-main strong {
+  color: #edf6ef;
+}
+
+:root[data-theme="dark"] .signup-preview-main span {
+  color: #aac4af;
+}
+
+:root[data-theme="dark"] .signup-preview-stats {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .signup-preview-stats strong {
+  color: #dcebdd;
+}
+
+:root[data-theme="dark"] .signup-preview-stats span {
+  color: #9fbaa5;
+}
+
+:root[data-theme="dark"] .signup-brand-footer {
+  color: #8fae96;
+}
+
+/* Mobile logo */
+@media (max-width: 850px) {
+  :root[data-theme="dark"] .signup-mobile-logo .signup-logo {
+    color: #9bc5a2;
+  }
+}

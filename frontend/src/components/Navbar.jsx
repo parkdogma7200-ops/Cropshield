@@ -58,6 +58,27 @@ const Navbar = () => {
     setProfileOpen(false);
   };
 
+  /*
+   * Format account creation date if it exists.
+   */
+  const formatDate = (date) => {
+    if (!date) {
+      return "Not available";
+    }
+
+    const parsedDate = new Date(date);
+
+    if (Number.isNaN(parsedDate.getTime())) {
+      return "Not available";
+    }
+
+    return parsedDate.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
   return (
     <header className="navbar">
       <div className="navbar-container">
@@ -70,7 +91,9 @@ const Navbar = () => {
           className="navbar-brand"
           onClick={handleNavigation}
         >
-          <span className="brand-icon">🌾</span>
+          <span className="brand-icon">
+            🌾
+          </span>
 
           <span className="brand-text">
             <span className="brand-name">
@@ -97,6 +120,7 @@ const Navbar = () => {
 
             {isAuthenticated ? (
               <>
+
                 <button
                   className="profile-button"
                   onClick={() => {
@@ -111,7 +135,7 @@ const Navbar = () => {
                   </span>
 
                   <span className="profile-name">
-                    {user?.name}
+                    {user?.name || "Account"}
                   </span>
 
                   <span className="profile-arrow">
@@ -120,27 +144,114 @@ const Navbar = () => {
                 </button>
 
 
-                {/* Profile Window
-                    Only name and email */}
+                {/* =========================================
+                    Complete Account Information
+                ========================================= */}
                 {profileOpen && (
                   <div className="profile-dropdown">
 
-                    <div className="profile-photo-placeholder">
-                      👤
+                    {/* Profile Header */}
+                    <div className="profile-header">
+
+                      <div className="profile-photo-placeholder">
+                        👤
+                      </div>
+
+                      <div className="profile-info">
+                        <strong>
+                          {user?.name || "Account Holder"}
+                        </strong>
+
+                        <span>
+                          {user?.email || "No email available"}
+                        </span>
+                      </div>
+
                     </div>
 
-                    <div className="profile-info">
-                      <strong>
-                        {user?.name}
-                      </strong>
 
-                      <span>
-                        {user?.email}
-                      </span>
+                    {/* Account Details */}
+                    <div className="profile-details">
+
+                      {/* Name */}
+                      <div className="profile-detail-item">
+                        <span className="profile-detail-label">
+                          FULL NAME
+                        </span>
+
+                        <strong>
+                          {user?.name || "Not available"}
+                        </strong>
+                      </div>
+
+
+                      {/* Email */}
+                      <div className="profile-detail-item">
+                        <span className="profile-detail-label">
+                          EMAIL
+                        </span>
+
+                        <strong>
+                          {user?.email || "Not available"}
+                        </strong>
+                      </div>
+
+
+                      {/* Role */}
+                      <div className="profile-detail-item">
+                        <span className="profile-detail-label">
+                          ROLE
+                        </span>
+
+                        <strong>
+                          {user?.role || "Farmer"}
+                        </strong>
+                      </div>
+
+
+                      {/* User ID */}
+                      <div className="profile-detail-item">
+                        <span className="profile-detail-label">
+                          ACCOUNT ID
+                        </span>
+
+                        <strong className="profile-id">
+                          {user?._id ||
+                            user?.id ||
+                            "Not available"}
+                        </strong>
+                      </div>
+
+
+                      {/* Account Creation Date */}
+                      <div className="profile-detail-item">
+                        <span className="profile-detail-label">
+                          MEMBER SINCE
+                        </span>
+
+                        <strong>
+                          {formatDate(
+                            user?.createdAt
+                          )}
+                        </strong>
+                      </div>
+
                     </div>
+
+
+                    {/* Settings Button */}
+                    <Link
+                      to="/settings"
+                      className="profile-settings-button"
+                      onClick={handleNavigation}
+                    >
+                      Account Settings
+                      <span>→</span>
+                    </Link>
 
                   </div>
                 )}
+
               </>
             ) : (
 

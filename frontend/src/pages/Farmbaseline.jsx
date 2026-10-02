@@ -1,20 +1,197 @@
+import { useEffect, useState } from "react";
 import "../css/Farmbaseline.css";
+import { useAuth } from "../context/AuthContext.jsx";
 
 const FarmBaseline = () => {
-  const handleSubmit = (event) => {
+  const { token } = useAuth();
+
+  const [formData, setFormData] = useState({
+    farmName: "",
+    farmLocation: "",
+    totalFarmSize: "",
+    soilType: "",
+    irrigationType: "",
+    primaryCrop: "",
+    typicalAnnualYield: "",
+    growingSeason: "",
+    notes: "",
+  });
+
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  // =====================================
+  // Load existing baseline
+  // =====================================
+
+  useEffect(() => {
+    const loadBaseline = async () => {
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/farm-baseline",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          const baseline = data.baseline;
+
+          setFormData({
+            farmName: baseline.farmName || "",
+            farmLocation: baseline.farmLocation || "",
+            totalFarmSize:
+              baseline.totalFarmSize ?? "",
+            soilType: baseline.soilType || "",
+            irrigationType:
+              baseline.irrigationType || "",
+            primaryCrop:
+              baseline.primaryCrop || "",
+            typicalAnnualYield:
+              baseline.typicalAnnualYield ?? "",
+            growingSeason:
+              baseline.growingSeason || "",
+            notes: baseline.notes || "",
+          });
+        }
+      } catch (error) {
+        console.error(
+          "Error loading farm baseline:",
+          error
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadBaseline();
+  }, [token]);
+
+  // =====================================
+  // Handle field changes
+  // =====================================
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+
+    setFormData((previous) => ({
+      ...previous,
+      [id]: value,
+    }));
+
+    setMessage("");
+    setError("");
+  };
+
+  // =====================================
+  // Save baseline
+  // =====================================
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    alert(
-      "Demo only: your farm baseline has not been saved."
-    );
+    setMessage("");
+    setError("");
+
+    // Basic frontend validation
+    if (
+      !formData.farmName.trim() ||
+      !formData.farmLocation.trim() ||
+      !formData.totalFarmSize ||
+      !formData.primaryCrop
+    ) {
+      setError(
+        "Please fill in farm name, location, farm size, and primary crop."
+      );
+
+      return;
+    }
+
+    setSaving(true);
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/farm-baseline",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(
+          data.message ||
+            "Failed to save farm baseline."
+        );
+
+        return;
+      }
+
+      setMessage(
+        "Farm baseline saved successfully."
+      );
+    } catch (error) {
+      console.error(
+        "Save farm baseline error:",
+        error
+      );
+
+      setError(
+        "Unable to connect to the CropShield server."
+      );
+    } finally {
+      setSaving(false);
+    }
   };
+
+  // =====================================
+  // Loading
+  // =====================================
+
+  if (loading) {
+    return (
+      <main className="baseline-page">
+        <div className="baseline-container">
+          <div className="baseline-header">
+            <span className="baseline-label">
+              FARM PROFILE
+            </span>
+
+            <h1>Farm Baseline</h1>
+
+            <p>
+              Loading your farm information...
+            </p>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="baseline-page">
-
       <div className="baseline-container">
 
         {/* Header */}
+
         <div className="baseline-header">
 
           <span className="baseline-label">
@@ -24,12 +201,12 @@ const FarmBaseline = () => {
           <h1>Farm Baseline</h1>
 
           <p>
-            Establish your farm's normal conditions so future
-            reports can be compared against a baseline.
+            Establish your farm's normal conditions so
+            future reports can be compared against a
+            baseline.
           </p>
 
         </div>
-
 
         <form
           className="baseline-form"
@@ -37,6 +214,7 @@ const FarmBaseline = () => {
         >
 
           {/* Farm Details */}
+
           <section className="baseline-card">
 
             <div className="baseline-card-header">
@@ -55,7 +233,6 @@ const FarmBaseline = () => {
 
             </div>
 
-
             <div className="baseline-grid">
 
               <div className="baseline-field">
@@ -68,10 +245,11 @@ const FarmBaseline = () => {
                   id="farmName"
                   type="text"
                   placeholder="Enter farm name"
+                  value={formData.farmName}
+                  onChange={handleChange}
                 />
 
               </div>
-
 
               <div className="baseline-field">
 
@@ -83,23 +261,28 @@ const FarmBaseline = () => {
                   id="farmLocation"
                   type="text"
                   placeholder="City, State / Region"
+                  value={formData.farmLocation}
+                  onChange={handleChange}
                 />
 
               </div>
 
-
               <div className="baseline-field">
 
-                <label htmlFor="farmSize">
+                <label htmlFor="totalFarmSize">
                   Total Farm Size
                 </label>
 
                 <div className="baseline-unit-input">
 
                   <input
-                    id="farmSize"
+                    id="totalFarmSize"
                     type="number"
+                    min="0"
+                    step="0.01"
                     placeholder="0.00"
+                    value={formData.totalFarmSize}
+                    onChange={handleChange}
                   />
 
                   <span>acres</span>
@@ -107,7 +290,6 @@ const FarmBaseline = () => {
                 </div>
 
               </div>
-
 
               <div className="baseline-field">
 
@@ -117,8 +299,10 @@ const FarmBaseline = () => {
 
                 <select
                   id="soilType"
-                  defaultValue=""
+                  value={formData.soilType}
+                  onChange={handleChange}
                 >
+
                   <option value="" disabled>
                     Select soil type
                   </option>
@@ -142,6 +326,7 @@ const FarmBaseline = () => {
                   <option value="mixed">
                     Mixed
                   </option>
+
                 </select>
 
               </div>
@@ -150,8 +335,8 @@ const FarmBaseline = () => {
 
           </section>
 
-
           {/* Farming Conditions */}
+
           <section className="baseline-card">
 
             <div className="baseline-card-header">
@@ -164,25 +349,27 @@ const FarmBaseline = () => {
                 <h2>Farming Conditions</h2>
 
                 <p>
-                  Describe your usual farming conditions.
+                  Describe your usual farming
+                  conditions.
                 </p>
               </div>
 
             </div>
 
-
             <div className="baseline-grid">
 
               <div className="baseline-field">
 
-                <label htmlFor="irrigation">
+                <label htmlFor="irrigationType">
                   Irrigation Type
                 </label>
 
                 <select
-                  id="irrigation"
-                  defaultValue=""
+                  id="irrigationType"
+                  value={formData.irrigationType}
+                  onChange={handleChange}
                 >
+
                   <option value="" disabled>
                     Select irrigation
                   </option>
@@ -206,10 +393,10 @@ const FarmBaseline = () => {
                   <option value="mixed">
                     Mixed
                   </option>
+
                 </select>
 
               </div>
-
 
               <div className="baseline-field">
 
@@ -219,8 +406,10 @@ const FarmBaseline = () => {
 
                 <select
                   id="primaryCrop"
-                  defaultValue=""
+                  value={formData.primaryCrop}
+                  onChange={handleChange}
                 >
+
                   <option value="" disabled>
                     Select crop
                   </option>
@@ -244,23 +433,29 @@ const FarmBaseline = () => {
                   <option value="soybean">
                     Soybean
                   </option>
+
                 </select>
 
               </div>
 
-
               <div className="baseline-field">
 
-                <label htmlFor="yield">
+                <label htmlFor="typicalAnnualYield">
                   Typical Annual Yield
                 </label>
 
                 <div className="baseline-unit-input">
 
                   <input
-                    id="yield"
+                    id="typicalAnnualYield"
                     type="number"
+                    min="0"
+                    step="0.01"
                     placeholder="0"
+                    value={
+                      formData.typicalAnnualYield
+                    }
+                    onChange={handleChange}
                   />
 
                   <span>units/acre</span>
@@ -269,17 +464,18 @@ const FarmBaseline = () => {
 
               </div>
 
-
               <div className="baseline-field">
 
-                <label htmlFor="season">
+                <label htmlFor="growingSeason">
                   Main Growing Season
                 </label>
 
                 <select
-                  id="season"
-                  defaultValue=""
+                  id="growingSeason"
+                  value={formData.growingSeason}
+                  onChange={handleChange}
                 >
+
                   <option value="" disabled>
                     Select season
                   </option>
@@ -303,6 +499,7 @@ const FarmBaseline = () => {
                   <option value="year-round">
                     Year-round
                   </option>
+
                 </select>
 
               </div>
@@ -311,8 +508,8 @@ const FarmBaseline = () => {
 
           </section>
 
-
           {/* Baseline Notes */}
+
           <section className="baseline-card">
 
             <div className="baseline-card-header">
@@ -325,46 +522,64 @@ const FarmBaseline = () => {
                 <h2>Baseline Notes</h2>
 
                 <p>
-                  Add additional information about normal farm
-                  conditions.
+                  Add additional information about normal
+                  farm conditions.
                 </p>
               </div>
 
             </div>
 
-
             <div className="baseline-field">
 
-              <label htmlFor="baselineNotes">
+              <label htmlFor="notes">
                 Notes
               </label>
 
               <textarea
-                id="baselineNotes"
+                id="notes"
                 rows="6"
                 placeholder="Describe typical weather, recurring challenges, planting patterns, or other useful information..."
+                value={formData.notes}
+                onChange={handleChange}
               />
 
             </div>
 
           </section>
 
+          {/* Success / Error */}
+
+          {message && (
+            <div className="baseline-success">
+              <span>✓</span>
+              <p>{message}</p>
+            </div>
+          )}
+
+          {error && (
+            <div className="baseline-error">
+              <span>!</span>
+              <p>{error}</p>
+            </div>
+          )}
 
           {/* Notice */}
+
           <div className="baseline-notice">
 
             <span>ⓘ</span>
 
             <p>
-              <strong>Frontend demonstration:</strong>{" "}
-              Your baseline information is currently not being
-              stored. Database storage will be connected later.
+              <strong>Saved to CropShield:</strong>{" "}
+              Your farm baseline is securely associated
+              with your account and will be used when
+              calculating future crop losses.
             </p>
 
           </div>
 
-
           {/* Actions */}
+
           <div className="baseline-actions">
 
             <button
@@ -378,8 +593,11 @@ const FarmBaseline = () => {
             <button
               type="submit"
               className="baseline-primary-button"
+              disabled={saving}
             >
-              Save Farm Baseline
+              {saving
+                ? "Saving..."
+                : "Save Farm Baseline"}
             </button>
 
           </div>
@@ -387,7 +605,6 @@ const FarmBaseline = () => {
         </form>
 
       </div>
-
     </main>
   );
 };

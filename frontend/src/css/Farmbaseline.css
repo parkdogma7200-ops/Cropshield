@@ -4,15 +4,12 @@
 
 .baseline-page {
   min-height: calc(100vh - 76px);
-
   padding: 60px 20px 90px;
-
   background: #f6f9f6;
 }
 
 .baseline-container {
   width: min(900px, 100%);
-
   margin: 0 auto;
 }
 
@@ -27,35 +24,24 @@
 
 .baseline-label {
   color: #598061;
-
   font-size: 9px;
-
   font-weight: 750;
-
   letter-spacing: 1.5px;
 }
 
 .baseline-header h1 {
   margin: 8px 0;
-
   color: #21452d;
-
   font-size: 38px;
-
   line-height: 1.1;
-
   letter-spacing: -1.4px;
 }
 
 .baseline-header p {
   max-width: 620px;
-
   margin: 0;
-
   color: #7b887f;
-
   font-size: 12px;
-
   line-height: 1.7;
 }
 
@@ -66,9 +52,7 @@
 
 .baseline-form {
   display: flex;
-
   flex-direction: column;
-
   gap: 16px;
 }
 
@@ -79,59 +63,41 @@
 
 .baseline-card {
   padding: 24px;
-
   background: #ffffff;
-
   border: 1px solid #e2e9e3;
-
   border-radius: 13px;
-
   box-shadow: 0 5px 18px rgba(31, 67, 42, 0.035);
 }
 
 .baseline-card-header {
   display: flex;
-
   align-items: center;
-
   gap: 13px;
-
   margin-bottom: 22px;
-
   padding-bottom: 18px;
-
   border-bottom: 1px solid #edf1ed;
 }
 
 .baseline-card-icon {
   width: 40px;
   height: 40px;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   background: #eaf4ec;
-
   border-radius: 10px;
-
   font-size: 17px;
 }
 
 .baseline-card-header h2 {
   margin: 0 0 3px;
-
   color: #294c34;
-
   font-size: 14px;
 }
 
 .baseline-card-header p {
   margin: 0;
-
   color: #89948c;
-
   font-size: 9px;
 }
 
@@ -142,9 +108,7 @@
 
 .baseline-grid {
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-
   gap: 18px;
 }
 
@@ -155,17 +119,13 @@
 
 .baseline-field {
   display: flex;
-
   flex-direction: column;
-
   gap: 7px;
 }
 
 .baseline-field label {
   color: #405247;
-
   font-size: 10px;
-
   font-weight: 700;
 }
 
@@ -173,23 +133,14 @@
 .baseline-field select,
 .baseline-field textarea {
   width: 100%;
-
   box-sizing: border-box;
-
   border: 1px solid #dce5de;
-
   border-radius: 8px;
-
   background: #fbfcfb;
-
   color: #405247;
-
   font-family: inherit;
-
   font-size: 11px;
-
   outline: none;
-
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
@@ -199,15 +150,12 @@
 .baseline-field input,
 .baseline-field select {
   height: 40px;
-
   padding: 0 12px;
 }
 
 .baseline-field textarea {
   min-height: 120px;
-
   padding: 11px 12px;
-
   resize: vertical;
 }
 
@@ -220,9 +168,7 @@
 .baseline-field select:focus,
 .baseline-field textarea:focus {
   border-color: #6a9b73;
-
   background: #ffffff;
-
   box-shadow: 0 0 0 3px rgba(82, 133, 91, 0.08);
 }
 
@@ -241,17 +187,11 @@
 
 .baseline-unit-input span {
   position: absolute;
-
   top: 50%;
-
   right: 12px;
-
   transform: translateY(-50%);
-
   color: #89948c;
-
   font-size: 8px;
-
   pointer-events: none;
 }
 
@@ -262,33 +202,23 @@
 
 .baseline-notice {
   display: flex;
-
   align-items: flex-start;
-
   gap: 10px;
-
   padding: 14px 16px;
-
   border: 1px solid #dce9de;
-
   border-radius: 10px;
-
   background: #f0f7f1;
 }
 
 .baseline-notice > span {
   color: #4d8058;
-
   font-size: 13px;
 }
 
 .baseline-notice p {
   margin: 0;
-
   color: #6f8073;
-
   font-size: 9px;
-
   line-height: 1.7;
 }
 
@@ -298,35 +228,81 @@
 
 
 /* =========================================
+   Success Message
+========================================= */
+
+.baseline-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid #cfe3d2;
+  border-radius: 10px;
+  background: #eef8f0;
+}
+
+.baseline-success > span {
+  color: #3f7b4b;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.baseline-success p {
+  margin: 0;
+  color: #4f7057;
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   Error Message
+========================================= */
+
+.baseline-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid #ead1d1;
+  border-radius: 10px;
+  background: #fdf2f2;
+}
+
+.baseline-error > span {
+  color: #a34f4f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.baseline-error p {
+  margin: 0;
+  color: #805656;
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+
+/* =========================================
    Actions
 ========================================= */
 
 .baseline-actions {
   display: flex;
-
   justify-content: flex-end;
-
   gap: 10px;
-
   padding-top: 5px;
 }
 
 .baseline-primary-button,
 .baseline-secondary-button {
   height: 40px;
-
   padding: 0 18px;
-
   border-radius: 8px;
-
   font-family: inherit;
-
   font-size: 10px;
-
   font-weight: 700;
-
   cursor: pointer;
-
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
@@ -335,32 +311,31 @@
 
 .baseline-primary-button {
   border: 1px solid #285f3a;
-
   background: #285f3a;
-
   color: #ffffff;
 }
 
 .baseline-primary-button:hover {
   background: #20532f;
-
   border-color: #20532f;
-
   transform: translateY(-1px);
 }
 
 .baseline-secondary-button {
   border: 1px solid #dce5de;
-
   background: #ffffff;
-
   color: #526159;
 }
 
 .baseline-secondary-button:hover {
   background: #f0f6f1;
-
   border-color: #c5d4c8;
+}
+
+.baseline-primary-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
 }
 
 
@@ -369,7 +344,6 @@
 ========================================= */
 
 @media (max-width: 600px) {
-
   .baseline-page {
     padding: 45px 15px 70px;
   }
@@ -384,7 +358,6 @@
 
   .baseline-grid {
     grid-template-columns: 1fr;
-
     gap: 18px;
   }
 
@@ -396,4 +369,151 @@
   .baseline-secondary-button {
     width: 100%;
   }
+}
+
+/* =========================================
+   Farm Baseline - Dark Mode
+========================================= */
+
+:root[data-theme="dark"] .baseline-page {
+  background: #101712;
+}
+
+:root[data-theme="dark"] .baseline-label {
+  color: #7fa98a;
+}
+
+:root[data-theme="dark"] .baseline-header h1 {
+  color: #e8f2ea;
+}
+
+:root[data-theme="dark"] .baseline-header p {
+  color: #9aa99e;
+}
+
+/* Card */
+
+:root[data-theme="dark"] .baseline-card {
+  background: #18221b;
+  border-color: #2b382e;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"] .baseline-card-header {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .baseline-card-icon {
+  background: #22372a;
+}
+
+:root[data-theme="dark"] .baseline-card-header h2 {
+  color: #dceade;
+}
+
+:root[data-theme="dark"] .baseline-card-header p {
+  color: #899b8f;
+}
+
+/* Fields */
+
+:root[data-theme="dark"] .baseline-field label {
+  color: #c9d8cd;
+}
+
+:root[data-theme="dark"] .baseline-field input,
+:root[data-theme="dark"] .baseline-field select,
+:root[data-theme="dark"] .baseline-field textarea {
+  border-color: #35443a;
+  background: #121a15;
+  color: #d5e2d8;
+}
+
+:root[data-theme="dark"] .baseline-field input::placeholder,
+:root[data-theme="dark"] .baseline-field textarea::placeholder {
+  color: #718078;
+}
+
+:root[data-theme="dark"] .baseline-field input:focus,
+:root[data-theme="dark"] .baseline-field select:focus,
+:root[data-theme="dark"] .baseline-field textarea:focus {
+  border-color: #6a9b73;
+  background: #18221b;
+  box-shadow: 0 0 0 3px rgba(106, 155, 115, 0.12);
+}
+
+:root[data-theme="dark"] .baseline-unit-input span {
+  color: #899b8f;
+}
+
+/* Notice */
+
+:root[data-theme="dark"] .baseline-notice {
+  background: #1b2c20;
+  border-color: #304936;
+}
+
+:root[data-theme="dark"] .baseline-notice > span {
+  color: #78a981;
+}
+
+:root[data-theme="dark"] .baseline-notice p {
+  color: #93a69a;
+}
+
+:root[data-theme="dark"] .baseline-notice strong {
+  color: #a8c5ae;
+}
+
+/* Success */
+
+:root[data-theme="dark"] .baseline-success {
+  background: #1b3021;
+  border-color: #34543b;
+}
+
+:root[data-theme="dark"] .baseline-success > span {
+  color: #79ad82;
+}
+
+:root[data-theme="dark"] .baseline-success p {
+  color: #9bb5a0;
+}
+
+/* Error */
+
+:root[data-theme="dark"] .baseline-error {
+  background: #301d1d;
+  border-color: #563333;
+}
+
+:root[data-theme="dark"] .baseline-error > span {
+  color: #d17b7b;
+}
+
+:root[data-theme="dark"] .baseline-error p {
+  color: #b99595;
+}
+
+/* Buttons */
+
+:root[data-theme="dark"] .baseline-primary-button {
+  background: #3d7650;
+  border-color: #4b895d;
+}
+
+:root[data-theme="dark"] .baseline-primary-button:hover {
+  background: #4b895d;
+  border-color: #4b895d;
+}
+
+:root[data-theme="dark"] .baseline-secondary-button {
+  background: #18221b;
+  border-color: #35443a;
+  color: #a8c0ad;
+}
+
+:root[data-theme="dark"] .baseline-secondary-button:hover {
+  background: #22372a;
+  border-color: #4a6250;
 }

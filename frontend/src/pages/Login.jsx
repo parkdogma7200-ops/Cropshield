@@ -125,7 +125,6 @@ const Login = () => {
 
         </div>
 
-
         {/* Right Side */}
         <div className="auth-form-side">
 
@@ -152,7 +151,6 @@ const Login = () => {
 
             </div>
 
-
             <form
               className="auth-form"
               onSubmit={handleSubmit}
@@ -170,22 +168,17 @@ const Login = () => {
                   placeholder="you@example.com"
                   value={email}
                   onChange={(event) =>
-                    setEmail(event.target.value)
+                    setEmail(event.target.value.trim())
                   }
                 />
 
               </div>
 
-
               <div className="form-field">
 
-                <div className="form-label-row">
-
-                  <label htmlFor="login-password">
-                    Password
-                  </label>
-
-                </div>
+                <label htmlFor="login-password">
+                  Password
+                </label>
 
                 <input
                   id="login-password"
@@ -198,7 +191,6 @@ const Login = () => {
                 />
 
               </div>
-
 
               <label className="remember-me">
 
@@ -216,13 +208,11 @@ const Login = () => {
 
               </label>
 
-
               {error && (
                 <p className="auth-error">
                   {error}
                 </p>
               )}
-
 
               <button
                 type="submit"
@@ -236,11 +226,9 @@ const Login = () => {
 
             </form>
 
-
             <div className="auth-divider">
               <span>OR</span>
             </div>
-
 
             <div className="auth-switch">
 
@@ -253,7 +241,6 @@ const Login = () => {
               </Link>
 
             </div>
-
 
             <p className="auth-demo-note">
               Your account is securely stored in the

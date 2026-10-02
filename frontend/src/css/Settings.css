@@ -962,3 +962,365 @@ css
     height: 37px;
   }
 }
+
+/* =========================================
+   Dark Mode - Settings Page
+========================================= */
+
+:root[data-theme="dark"] .settings-page {
+  background: #101712;
+}
+
+/* =========================================
+   Header
+========================================= */
+
+:root[data-theme="dark"] .settings-label {
+  color: #7fa98a;
+}
+
+:root[data-theme="dark"] .settings-header h1 {
+  color: #e8f2ea;
+}
+
+:root[data-theme="dark"] .settings-header p {
+  color: #9aa99e;
+}
+
+/* =========================================
+   Settings Cards
+========================================= */
+
+:root[data-theme="dark"] .settings-card {
+  background: #18221b;
+  border-color: #2b382e;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"] .settings-card-header {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .settings-card-icon {
+  background: #22372a;
+}
+
+:root[data-theme="dark"] .settings-card-header h2 {
+  color: #dceade;
+}
+
+:root[data-theme="dark"] .settings-card-header p {
+  color: #899b8f;
+}
+
+/* =========================================
+   Profile
+========================================= */
+
+:root[data-theme="dark"] .settings-profile {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .profile-avatar {
+  background: #22372a;
+  color: #82ad8b;
+}
+
+:root[data-theme="dark"] .profile-info strong {
+  color: #cbdace;
+}
+
+:root[data-theme="dark"] .profile-info span {
+  color: #899b8f;
+}
+
+/* =========================================
+   Settings Rows
+========================================= */
+
+:root[data-theme="dark"] .settings-row {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .settings-row strong {
+  color: #cbdace;
+}
+
+:root[data-theme="dark"] .settings-row span {
+  color: #899b8f;
+}
+
+/* =========================================
+   Edit Information Button
+========================================= */
+
+:root[data-theme="dark"] .settings-edit-button {
+  background: #22372a;
+  border-color: #405345;
+  color: #91b99a;
+}
+
+:root[data-theme="dark"] .settings-edit-button:hover {
+  background: #294431;
+  border-color: #4a6250;
+  color: #a8c5ae;
+}
+
+/* =========================================
+   Status
+========================================= */
+
+:root[data-theme="dark"] .settings-status {
+  background: #22372a;
+  color: #86b18e !important;
+}
+
+/* =========================================
+   Select
+========================================= */
+
+:root[data-theme="dark"] .settings-row select {
+  border-color: #35443a;
+  background: #121a15;
+  color: #c9d8cd;
+}
+
+:root[data-theme="dark"] .settings-row select:focus {
+  border-color: #6a9b73;
+  box-shadow: 0 0 0 3px rgba(106, 155, 115, 0.12);
+}
+
+/* =========================================
+   Toggle
+========================================= */
+
+:root[data-theme="dark"] .toggle-slider {
+  background: #3a473e;
+}
+
+:root[data-theme="dark"] .toggle-slider::before {
+  background: #dceade;
+}
+
+:root[data-theme="dark"] .settings-toggle input:checked + .toggle-slider {
+  background: #4b895d;
+}
+
+/* =========================================
+   Notice
+========================================= */
+
+:root[data-theme="dark"] .settings-notice {
+  background: #1b2c20;
+  border-color: #304936;
+}
+
+:root[data-theme="dark"] .settings-notice > span {
+  color: #78a981;
+}
+
+:root[data-theme="dark"] .settings-notice p {
+  color: #93a69a;
+}
+
+:root[data-theme="dark"] .settings-notice strong {
+  color: #a8c5ae;
+}
+
+/* =========================================
+   Logout
+========================================= */
+
+:root[data-theme="dark"] .settings-logout {
+  border-color: #29362d;
+}
+
+:root[data-theme="dark"] .settings-logout strong {
+  color: #cbdace;
+}
+
+:root[data-theme="dark"] .settings-logout span {
+  color: #899b8f;
+}
+
+:root[data-theme="dark"] .settings-logout-button {
+  background: #18221b;
+  border-color: #35443a;
+  color: #a8b9ad;
+}
+
+:root[data-theme="dark"] .settings-logout-button:hover {
+  background: #22372a;
+  border-color: #4a6250;
+  color: #a8c5ae;
+}
+
+/* =========================================
+   Account Modal Overlay
+========================================= */
+
+:root[data-theme="dark"] .account-modal-overlay {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+/* =========================================
+   Account Modal
+========================================= */
+
+:root[data-theme="dark"] .account-modal {
+  background: #18221b;
+  border-color: #2f3e34;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.42);
+}
+
+/* Modal Scrollbar */
+
+:root[data-theme="dark"] .account-modal::-webkit-scrollbar-thumb {
+  background: #405345;
+}
+
+:root[data-theme="dark"] .account-modal {
+  scrollbar-color: #405345 transparent;
+}
+
+/* =========================================
+   Modal Header
+========================================= */
+
+:root[data-theme="dark"] .account-modal-header {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .account-modal-label {
+  color: #7fa98a;
+}
+
+:root[data-theme="dark"] .account-modal-header h2 {
+  color: #e0ece2;
+}
+
+:root[data-theme="dark"] .account-modal-header p {
+  color: #899b8f;
+}
+
+/* =========================================
+   Modal Close Button
+========================================= */
+
+:root[data-theme="dark"] .account-modal-close {
+  background: #121a15;
+  border-color: #35443a;
+  color: #899b8f;
+}
+
+:root[data-theme="dark"] .account-modal-close:hover {
+  background: #22372a;
+  border-color: #4a6250;
+  color: #b3ccb8;
+}
+
+:root[data-theme="dark"] .account-modal-close:disabled {
+  opacity: 0.5;
+}
+
+/* =========================================
+   Account Form
+========================================= */
+
+:root[data-theme="dark"] .account-form-section {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .account-form-section h3 {
+  color: #a9bcad;
+}
+
+/* =========================================
+   Form Groups
+========================================= */
+
+:root[data-theme="dark"] .account-form-group label {
+  color: #b9cabe;
+}
+
+:root[data-theme="dark"] .account-form-group input {
+  border-color: #35443a;
+  background: #121a15;
+  color: #d5e2d8;
+}
+
+:root[data-theme="dark"] .account-form-group input::placeholder {
+  color: #718078;
+}
+
+:root[data-theme="dark"] .account-form-group input:focus {
+  background: #18221b;
+  border-color: #6a9b73;
+  box-shadow: 0 0 0 3px rgba(106, 155, 115, 0.12);
+}
+
+/* =========================================
+   Account Messages
+========================================= */
+
+:root[data-theme="dark"] .account-message-success {
+  border-color: #34543b;
+  background: #1b3021;
+  color: #83b58c;
+}
+
+:root[data-theme="dark"] .account-message-error {
+  border-color: #563333;
+  background: #301d1d;
+  color: #d18a8a;
+}
+
+/* =========================================
+   Modal Actions
+========================================= */
+
+:root[data-theme="dark"] .account-modal-actions {
+  border-top-color: #29362d;
+}
+
+/* Cancel */
+
+:root[data-theme="dark"] .account-cancel-button {
+  border-color: #35443a;
+  background: #18221b;
+  color: #a8b9ad;
+}
+
+:root[data-theme="dark"] .account-cancel-button:hover {
+  background: #22372a;
+  border-color: #4a6250;
+  color: #b4cbbb;
+}
+
+/* Save */
+
+:root[data-theme="dark"] .account-save-button {
+  border-color: #397149;
+  background: #397149;
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .account-save-button:hover {
+  background: #4b895d;
+  border-color: #4b895d;
+}
+
+:root[data-theme="dark"] .account-cancel-button:disabled,
+:root[data-theme="dark"] .account-save-button:disabled {
+  opacity: 0.55;
+}
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 600px) {
+  :root[data-theme="dark"] .settings-page {
+    background: #101712;
+  }
+}

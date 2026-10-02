@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
@@ -14,6 +15,107 @@ import Signup from "./pages/Signup.jsx";
 import Settings from "./pages/Settings.jsx";
 
 const App = () => {
+
+  // =========================================
+  // Global Theme
+  // =========================================
+
+  useEffect(() => {
+
+    const applyTheme = () => {
+
+      const selectedTheme =
+        localStorage.getItem("cropShieldTheme") || "system";
+
+      let actualTheme = selectedTheme;
+
+      // System mode follows the computer/browser theme.
+      if (selectedTheme === "system") {
+
+        const prefersDark =
+          window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+
+        actualTheme = prefersDark
+          ? "dark"
+          : "light";
+      }
+
+      // Apply the final theme to the entire document.
+      document.documentElement.setAttribute(
+        "data-theme",
+        actualTheme
+      );
+    };
+
+
+    // Apply theme when App first loads.
+    applyTheme();
+
+
+    // =========================================
+    // Listen for theme changes from Settings
+    // =========================================
+
+    const handleThemeChange = () => {
+      applyTheme();
+    };
+
+    window.addEventListener(
+      "cropShieldThemeChanged",
+      handleThemeChange
+    );
+
+
+    // =========================================
+    // System Theme Changes
+    // =========================================
+
+    const mediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+
+    const handleSystemThemeChange = () => {
+
+      const selectedTheme =
+        localStorage.getItem("cropShieldTheme") ||
+        "system";
+
+      // Only automatically change when
+      // the user selected System mode.
+      if (selectedTheme === "system") {
+        applyTheme();
+      }
+    };
+
+    mediaQuery.addEventListener(
+      "change",
+      handleSystemThemeChange
+    );
+
+
+    // =========================================
+    // Cleanup
+    // =========================================
+
+    return () => {
+
+      window.removeEventListener(
+        "cropShieldThemeChanged",
+        handleThemeChange
+      );
+
+      mediaQuery.removeEventListener(
+        "change",
+        handleSystemThemeChange
+      );
+
+    };
+
+  }, []);
+
+
   return (
     <>
       <Navbar />
@@ -25,7 +127,10 @@ const App = () => {
               Public Routes
           ========================================= */}
 
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
           <Route
             path="/about"

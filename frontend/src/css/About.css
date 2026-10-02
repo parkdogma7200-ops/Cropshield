@@ -698,3 +698,254 @@
     font-size: 8px;
   }
 }
+
+/* =========================================
+   About - Dark Mode
+========================================= */
+
+:root[data-theme="dark"] .about-page {
+  background: #101712;
+}
+
+:root[data-theme="dark"] .about-hero {
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(61, 112, 73, 0.22),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #121b15,
+      #18251b
+    );
+}
+
+:root[data-theme="dark"] .about-label,
+:root[data-theme="dark"] .about-section-label {
+  color: #82a98b;
+}
+
+:root[data-theme="dark"] .about-hero-text h1 {
+  color: #e8f2ea;
+}
+
+:root[data-theme="dark"] .about-hero-text h1 span {
+  color: #75a97f;
+}
+
+:root[data-theme="dark"] .about-hero-text p {
+  color: #a0afa4;
+}
+
+/* =========================================
+   Hero Card
+========================================= */
+
+:root[data-theme="dark"] .about-hero-card {
+  background: #18221b;
+  border-color: #2d3b30;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+:root[data-theme="dark"] .about-card-top {
+  border-bottom-color: #29362d;
+  color: #899b8f;
+}
+
+:root[data-theme="dark"] .about-card-dot {
+  background: #6fa078;
+}
+
+:root[data-theme="dark"] .about-flow-item {
+  background: #1d2a20;
+}
+
+:root[data-theme="dark"] .about-flow-icon {
+  background: #24382a;
+}
+
+:root[data-theme="dark"] .about-flow-item strong {
+  color: #cbdace;
+}
+
+:root[data-theme="dark"] .about-flow-item span {
+  color: #899b8f;
+}
+
+:root[data-theme="dark"] .about-flow-line {
+  background: #3b4e40;
+}
+
+:root[data-theme="dark"] .about-card-footer {
+  border-top-color: #29362d;
+  color: #88a990;
+}
+
+/* =========================================
+   Mission
+========================================= */
+
+:root[data-theme="dark"] .about-mission {
+  background: #101712;
+}
+
+:root[data-theme="dark"] .mission-heading h2,
+:root[data-theme="dark"] .process-text h2 {
+  color: #e3eee5;
+}
+
+:root[data-theme="dark"] .mission-heading h2 span,
+:root[data-theme="dark"] .process-text h2 span {
+  color: #75a97f;
+}
+
+:root[data-theme="dark"] .mission-text p {
+  color: #9aa99e;
+}
+
+:root[data-theme="dark"] .mission-text strong {
+  color: #a8c5ae;
+}
+
+/* =========================================
+   Features
+========================================= */
+
+:root[data-theme="dark"] .about-features {
+  background: #151e18;
+}
+
+:root[data-theme="dark"] .about-section-heading h2 {
+  color: #e3eee5;
+}
+
+:root[data-theme="dark"] .about-section-heading h2 span {
+  color: #75a97f;
+}
+
+:root[data-theme="dark"] .about-section-heading p {
+  color: #96a69b;
+}
+
+:root[data-theme="dark"] .about-feature-card {
+  background: #18221b;
+  border-color: #2b382e;
+}
+
+:root[data-theme="dark"] .about-feature-card:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22);
+}
+
+:root[data-theme="dark"] .about-feature-number {
+  color: #506456;
+}
+
+:root[data-theme="dark"] .about-feature-icon {
+  background: #22372a;
+}
+
+:root[data-theme="dark"] .about-feature-card h3 {
+  color: #cbdace;
+}
+
+:root[data-theme="dark"] .about-feature-card p {
+  color: #909f95;
+}
+
+/* =========================================
+   Values
+========================================= */
+
+:root[data-theme="dark"] .about-values {
+  background: #101712;
+}
+
+:root[data-theme="dark"] .value-card {
+  background: #18221b;
+  border-color: #2b382e;
+}
+
+:root[data-theme="dark"] .value-icon {
+  background: #22372a;
+  color: #78a481;
+}
+
+:root[data-theme="dark"] .value-card h3 {
+  color: #cbdace;
+}
+
+:root[data-theme="dark"] .value-card p {
+  color: #909f95;
+}
+
+/* =========================================
+   Process
+========================================= */
+
+:root[data-theme="dark"] .about-process {
+  background: #151e18;
+}
+
+:root[data-theme="dark"] .process-text p {
+  color: #96a69b;
+}
+
+:root[data-theme="dark"] .process-step {
+  border-bottom-color: #304036;
+}
+
+:root[data-theme="dark"] .process-step:first-child {
+  border-top-color: #304036;
+}
+
+:root[data-theme="dark"] .process-step-number {
+  background: #29402f;
+  color: #8bb293;
+}
+
+:root[data-theme="dark"] .process-step strong {
+  color: #cbdace;
+}
+
+:root[data-theme="dark"] .process-step p {
+  color: #909f95;
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+:root[data-theme="dark"] .about-cta {
+  background: #1d492b;
+}
+
+:root[data-theme="dark"] .about-cta .about-section-label {
+  color: #a9c8af;
+}
+
+:root[data-theme="dark"] .about-cta h2 {
+  color: #f2f8f3;
+}
+
+:root[data-theme="dark"] .about-cta p {
+  color: #bfd2c2;
+}
+
+:root[data-theme="dark"] .about-primary-button {
+  background: #edf6ef;
+  color: #285538;
+}
+
+:root[data-theme="dark"] .about-primary-button:hover {
+  background: #ffffff;
+}
+
+:root[data-theme="dark"] .about-secondary-button {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #f0f6f1;
+}
+
+:root[data-theme="dark"] .about-secondary-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

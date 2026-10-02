@@ -13,6 +13,30 @@ const Settings = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  // =====================================
+  // Appearance Settings
+  // =====================================
+
+  const [theme, setTheme] = useState(
+    localStorage.getItem("cropShieldTheme") || "system"
+  );
+
+  // =====================================
+  // Data & Reports Settings
+  // =====================================
+
+  const [autoSaveReports, setAutoSaveReports] = useState(
+    localStorage.getItem("cropShieldAutoSave") === "true"
+  );
+
+  const [reportFormat, setReportFormat] = useState(
+    localStorage.getItem("cropShieldReportFormat") || "PDF"
+  );
+
+  // =====================================
+  // Account Form
+  // =====================================
+
   const [accountForm, setAccountForm] = useState({
     name: user?.name || "",
     email: user?.email || "",
@@ -22,6 +46,63 @@ const Settings = () => {
     farmSize: user?.farmSize || "",
     primaryCrop: user?.primaryCrop || "",
   });
+
+  // =====================================
+  // Theme
+  // =====================================
+
+  const handleThemeChange = (event) => {
+    const selectedTheme = event.target.value;
+
+    setTheme(selectedTheme);
+
+    localStorage.setItem(
+      "cropShieldTheme",
+      selectedTheme
+    );
+
+    window.dispatchEvent(
+      new Event("cropShieldThemeChanged")
+    );
+  };
+
+  // =====================================
+  // Auto Save Reports
+  // =====================================
+
+  const handleAutoSaveChange = (event) => {
+    const enabled = event.target.checked;
+
+    setAutoSaveReports(enabled);
+
+    localStorage.setItem(
+      "cropShieldAutoSave",
+      String(enabled)
+    );
+
+    window.dispatchEvent(
+      new Event("cropShieldAutoSaveChanged")
+    );
+  };
+
+  // =====================================
+  // Report Format
+  // =====================================
+
+  const handleReportFormatChange = (event) => {
+    const selectedFormat = event.target.value;
+
+    setReportFormat(selectedFormat);
+
+    localStorage.setItem(
+      "cropShieldReportFormat",
+      selectedFormat
+    );
+
+    window.dispatchEvent(
+      new Event("cropShieldReportFormatChanged")
+    );
+  };
 
   // =====================================
   // Open Account Editor
@@ -58,7 +139,7 @@ const Settings = () => {
   };
 
   // =====================================
-  // Handle Form Changes
+  // Account Form Changes
   // =====================================
 
   const handleAccountChange = (event) => {
@@ -98,27 +179,33 @@ const Settings = () => {
 
       if (!response.ok) {
         throw new Error(
-          data.message || "Unable to update account information."
+          data.message ||
+            "Unable to update account information."
         );
       }
 
       /*
-       * Update AuthContext immediately so the
-       * Navbar profile changes without logging in again.
+       * Update AuthContext immediately.
+       * This also updates the Navbar profile.
        */
       const rememberMe =
         localStorage.getItem("cropShieldToken") !== null;
 
       login(data.user, token, rememberMe);
 
-      setMessage("Account information updated successfully.");
+      setMessage(
+        "Account information updated successfully."
+      );
 
       setTimeout(() => {
         setAccountOpen(false);
         setMessage("");
       }, 1200);
     } catch (error) {
-      console.error("Account update error:", error);
+      console.error(
+        "Account update error:",
+        error
+      );
 
       setError(
         error.message ||
@@ -142,8 +229,12 @@ const Settings = () => {
     <div className="settings-page">
       <div className="settings-container">
 
-        {/* Header */}
+        {/* =====================================
+            Header
+        ===================================== */}
+
         <div className="settings-header">
+
           <span className="settings-label">
             PREFERENCES
           </span>
@@ -154,10 +245,14 @@ const Settings = () => {
             Manage your CropShield preferences and
             application settings.
           </p>
+
         </div>
 
 
-        {/* Settings Cards */}
+        {/* =====================================
+            Settings Content
+        ===================================== */}
+
         <div className="settings-content">
 
           {/* =====================================
@@ -184,10 +279,12 @@ const Settings = () => {
 
 
             {/* Profile Preview */}
+
             <div className="settings-profile">
 
               <div className="profile-avatar">
-                {user?.name?.charAt(0).toUpperCase() || "U"}
+                {user?.name?.charAt(0).toUpperCase() ||
+                  "U"}
               </div>
 
               <div className="profile-info">
@@ -197,7 +294,8 @@ const Settings = () => {
                 </strong>
 
                 <span>
-                  {user?.email || "No email available"}
+                  {user?.email ||
+                    "No email available"}
                 </span>
 
               </div>
@@ -205,7 +303,8 @@ const Settings = () => {
             </div>
 
 
-            {/* Edit Account */}
+            {/* Account Information */}
+
             <div className="settings-row">
 
               <div>
@@ -230,10 +329,13 @@ const Settings = () => {
 
 
             {/* Account Status */}
+
             <div className="settings-row">
 
               <div>
-                <strong>Account Status</strong>
+                <strong>
+                  Account Status
+                </strong>
 
                 <span>
                   Your CropShield account is active.
@@ -247,36 +349,14 @@ const Settings = () => {
             </div>
 
 
-            {/* Email Notifications */}
-            <div className="settings-row">
-
-              <div>
-                <strong>Email Notifications</strong>
-
-                <span>
-                  Receive updates about your reports.
-                </span>
-              </div>
-
-              <label className="settings-toggle">
-
-                <input
-                  type="checkbox"
-                  defaultChecked
-                />
-
-                <span className="toggle-slider"></span>
-
-              </label>
-
-            </div>
-
-
             {/* Logout */}
+
             <div className="settings-logout">
 
               <div>
-                <strong>Sign Out</strong>
+                <strong>
+                  Sign Out
+                </strong>
 
                 <span>
                   Sign out of your CropShield account.
@@ -322,15 +402,20 @@ const Settings = () => {
             <div className="settings-row">
 
               <div>
-                <strong>Theme</strong>
+                <strong>
+                  Theme
+                </strong>
 
                 <span>
-                  Choose your preferred appearance.
+                  Choose how CropShield should appear.
                 </span>
               </div>
 
-              <select defaultValue="light">
-
+              <select
+                value={theme}
+                onChange={handleThemeChange}
+                aria-label="Theme"
+              >
                 <option value="light">
                   Light
                 </option>
@@ -342,7 +427,6 @@ const Settings = () => {
                 <option value="system">
                   System
                 </option>
-
               </select>
 
             </div>
@@ -363,15 +447,21 @@ const Settings = () => {
               </div>
 
               <div>
-                <h2>Data & Reports</h2>
+                <h2>
+                  Data & Reports
+                </h2>
 
                 <p>
-                  Manage your report preferences.
+                  Manage how CropShield handles your reports.
                 </p>
               </div>
 
             </div>
 
+
+            {/* =====================================
+                Automatically Save Reports
+            ===================================== */}
 
             <div className="settings-row">
 
@@ -381,13 +471,26 @@ const Settings = () => {
                 </strong>
 
                 <span>
-                  Automatically save completed reports.
+                  Automatically save completed reports
+                  to your computer after generation.
                 </span>
               </div>
 
-              <label className="settings-toggle">
+              <label
+                className="settings-toggle"
+                title={
+                  autoSaveReports
+                    ? "Automatic report saving is enabled"
+                    : "Automatic report saving is disabled"
+                }
+              >
 
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={autoSaveReports}
+                  onChange={handleAutoSaveChange}
+                  aria-label="Save reports automatically"
+                />
 
                 <span className="toggle-slider"></span>
 
@@ -396,17 +499,28 @@ const Settings = () => {
             </div>
 
 
+            {/* =====================================
+                Report Format
+            ===================================== */}
+
             <div className="settings-row">
 
               <div>
-                <strong>Report Format</strong>
+                <strong>
+                  Report Format
+                </strong>
 
                 <span>
-                  Default format for generated reports.
+                  Choose the default format for generated
+                  reports when automatic saving is enabled.
                 </span>
               </div>
 
-              <select defaultValue="PDF">
+              <select
+                value={reportFormat}
+                onChange={handleReportFormatChange}
+                aria-label="Report format"
+              >
 
                 <option value="PDF">
                   PDF
@@ -420,27 +534,76 @@ const Settings = () => {
 
             </div>
 
+
+            {/* =====================================
+                Current Report Settings
+            ===================================== */}
+
+            <div className="settings-row">
+
+              <div>
+                <strong>
+                  Current Report Settings
+                </strong>
+
+                <span>
+                  {autoSaveReports
+                    ? `Completed reports will be automatically saved as ${reportFormat}.`
+                    : "Automatic saving is currently disabled. You can still generate reports manually."
+                  }
+                </span>
+              </div>
+
+              <span
+                className="settings-status"
+                style={{
+                  background: autoSaveReports
+                    ? undefined
+                    : "#f0f2f0",
+                  color: autoSaveReports
+                    ? undefined
+                    : "#7b857d",
+                }}
+              >
+                {autoSaveReports
+                  ? "Enabled"
+                  : "Manual"}
+              </span>
+
+            </div>
+
           </section>
 
 
-          {/* Information Notice */}
+          {/* =====================================
+              Information Notice
+          ===================================== */}
+
           <div className="settings-notice">
 
             <span>ⓘ</span>
 
             <div>
+
               <p>
+
                 <strong>
-                  Your account information is stored securely.
+                  Your settings are saved automatically.
                 </strong>{" "}
-                Changes made through Account Settings are
-                saved to your CropShield account.
+
+                Theme, automatic report saving, and
+                report format preferences are stored
+                on this browser and will remain selected
+                when you return to CropShield.
+
               </p>
+
             </div>
 
           </div>
 
         </div>
+
       </div>
 
 
@@ -449,12 +612,17 @@ const Settings = () => {
       ===================================== */}
 
       {accountOpen && (
+
         <div
           className="account-modal-overlay"
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
+
+            if (
+              event.target === event.currentTarget
+            ) {
               handleCloseAccount();
             }
+
           }}
         >
 
@@ -465,10 +633,14 @@ const Settings = () => {
             aria-labelledby="account-modal-title"
           >
 
-            {/* Modal Header */}
+            {/* =====================================
+                Modal Header
+            ===================================== */}
+
             <div className="account-modal-header">
 
               <div>
+
                 <span className="account-modal-label">
                   ACCOUNT
                 </span>
@@ -480,6 +652,7 @@ const Settings = () => {
                 <p>
                   Update your personal and farm details.
                 </p>
+
               </div>
 
               <button
@@ -495,16 +668,24 @@ const Settings = () => {
             </div>
 
 
-            {/* Modal Form */}
+            {/* =====================================
+                Modal Form
+            ===================================== */}
+
             <form
               className="account-form"
               onSubmit={handleSaveAccount}
             >
 
-              {/* Personal Information */}
+              {/* =====================================
+                  Personal Information
+              ===================================== */}
+
               <div className="account-form-section">
 
-                <h3>Personal Information</h3>
+                <h3>
+                  Personal Information
+                </h3>
 
                 <div className="account-form-grid">
 
@@ -568,10 +749,15 @@ const Settings = () => {
               </div>
 
 
-              {/* Farm Information */}
+              {/* =====================================
+                  Farm Information
+              ===================================== */}
+
               <div className="account-form-section">
 
-                <h3>Farm Information</h3>
+                <h3>
+                  Farm Information
+                </h3>
 
                 <div className="account-form-group">
 
@@ -651,21 +837,31 @@ const Settings = () => {
               </div>
 
 
-              {/* Success/Error Message */}
+              {/* =====================================
+                  Success / Error
+              ===================================== */}
+
               {message && (
+
                 <div className="account-message account-message-success">
                   ✓ {message}
                 </div>
+
               )}
 
               {error && (
+
                 <div className="account-message account-message-error">
                   {error}
                 </div>
+
               )}
 
 
-              {/* Modal Actions */}
+              {/* =====================================
+                  Modal Actions
+              ===================================== */}
+
               <div className="account-modal-actions">
 
                 <button
@@ -694,7 +890,9 @@ const Settings = () => {
           </div>
 
         </div>
+
       )}
+
     </div>
   );
 };

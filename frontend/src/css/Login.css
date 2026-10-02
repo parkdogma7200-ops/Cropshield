@@ -455,3 +455,179 @@
     font-size: 9px;
   }
 }
+
+/* =========================================
+   Dark Mode - Login Page
+========================================= */
+
+:root[data-theme="dark"] .auth-page {
+  background: #101712;
+}
+
+:root[data-theme="dark"] .auth-brand-side {
+  background:
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(107, 157, 114, 0.18),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #14251a,
+      #1d3b26
+    );
+}
+
+:root[data-theme="dark"] .auth-brand-content h1 {
+  color: #edf6ef;
+}
+
+:root[data-theme="dark"] .auth-brand-content h1 span {
+  color: #91bd99;
+}
+
+:root[data-theme="dark"] .auth-brand-content > p {
+  color: #b5c8ba;
+}
+
+:root[data-theme="dark"] .auth-label {
+  color: #9fc0a6;
+}
+
+:root[data-theme="dark"] .auth-benefit span {
+  background: rgba(155, 194, 163, 0.13);
+  color: #9fc7a7;
+}
+
+:root[data-theme="dark"] .auth-benefit p {
+  color: #b8cbbd;
+}
+
+:root[data-theme="dark"] .auth-side-footer {
+  color: #849f8b;
+}
+
+/* =========================================
+   Form Side
+========================================= */
+
+:root[data-theme="dark"] .auth-form-side {
+  background: #121a15;
+}
+
+:root[data-theme="dark"] .auth-form-label {
+  color: #7fa98a;
+}
+
+:root[data-theme="dark"] .auth-form-header h2 {
+  color: #e5f0e7;
+}
+
+:root[data-theme="dark"] .auth-form-header p {
+  color: #929f96;
+}
+
+/* =========================================
+   Form Fields
+========================================= */
+
+:root[data-theme="dark"] .form-field label,
+:root[data-theme="dark"] .form-label-row label {
+  color: #c1d0c5;
+}
+
+:root[data-theme="dark"] .form-field input {
+  border-color: #35443a;
+  background: #0f1712;
+  color: #d7e4da;
+}
+
+:root[data-theme="dark"] .form-field input::placeholder {
+  color: #718078;
+}
+
+:root[data-theme="dark"] .form-field input:focus {
+  border-color: #6a9b73;
+  background: #18221b;
+  box-shadow: 0 0 0 3px rgba(106, 155, 115, 0.12);
+}
+
+:root[data-theme="dark"] .forgot-password {
+  color: #82ad8b;
+}
+
+:root[data-theme="dark"] .remember-me {
+  color: #89998f;
+}
+
+:root[data-theme="dark"] .remember-me input {
+  accent-color: #6fa078;
+}
+
+/* =========================================
+   Login Error
+========================================= */
+
+:root[data-theme="dark"] .auth-error {
+  border-color: #563333;
+  background: #2b1b1b;
+  color: #d58a8a;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+:root[data-theme="dark"] .auth-error::before {
+  background: #2b1b1b;
+  border-left-color: #563333;
+  border-top-color: #563333;
+}
+
+/* =========================================
+   Submit Button
+========================================= */
+
+:root[data-theme="dark"] .auth-submit-button {
+  background: #3d7650;
+  box-shadow: 0 7px 17px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .auth-submit-button:hover {
+  background: #4b895d;
+  box-shadow: 0 9px 20px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================
+   Divider
+========================================= */
+
+:root[data-theme="dark"] .auth-divider::before,
+:root[data-theme="dark"] .auth-divider::after {
+  background: #2b382e;
+}
+
+:root[data-theme="dark"] .auth-divider span {
+  color: #718078;
+}
+
+/* =========================================
+   Account Switch
+========================================= */
+
+:root[data-theme="dark"] .auth-switch p {
+  color: #89988e;
+}
+
+:root[data-theme="dark"] .auth-switch a {
+  color: #82ad8b;
+}
+
+:root[data-theme="dark"] .auth-demo-note {
+  color: #718078;
+}
+
+/* =========================================
+   Mobile
+========================================= */
+
+:root[data-theme="dark"] .mobile-auth-logo .auth-logo {
+  color: #9bc5a2;
+}

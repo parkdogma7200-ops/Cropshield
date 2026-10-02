@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx";
 import "../css/Signup.css";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -37,14 +35,14 @@ const Signup = () => {
     }
 
     if (!acceptedTerms) {
-      setError("Please accept the terms before creating your account.");
+      setError("Please accept the terms before continuing.");
       return;
     }
 
     try {
       setLoading(true);
 
-      // Send signup information to backend
+      // Send signup request to backend
       const response = await fetch(
         "http://localhost:5000/api/auth/signup",
         {
@@ -64,15 +62,16 @@ const Signup = () => {
 
       // Backend returned an error
       if (!response.ok) {
-        setError(data.message || "Unable to create account.");
+        setError(data.message || "Unable to create your account.");
         return;
       }
 
-      // Save authenticated user and JWT
-      login(data.user, data.token);
-
-      // Go to dashboard
-      navigate("/dashboard");
+      // Account was created successfully
+      navigate("/login", {
+        state: {
+          message: "Account created successfully. You can now log in.",
+        },
+      });
 
     } catch (error) {
       console.error("Signup error:", error);
@@ -91,17 +90,9 @@ const Signup = () => {
 
       <div className="signup-container">
 
-        {/* Left Side */}
         <div className="signup-form-side">
 
           <div className="signup-form-wrapper">
-
-            <div className="signup-mobile-logo">
-              <Link to="/" className="signup-logo">
-                <span>🌱</span>
-                CropShield
-              </Link>
-            </div>
 
             <div className="signup-form-header">
 
@@ -112,12 +103,10 @@ const Signup = () => {
               <h1>Join CropShield</h1>
 
               <p>
-                Create an account to start organizing your
-                crop-loss records.
+                Create your account to start using CropShield.
               </p>
 
             </div>
-
 
             <form
               className="signup-form"
@@ -126,16 +115,16 @@ const Signup = () => {
 
               <div className="signup-field">
 
-                <label htmlFor="signup-name">
-                  Full Name
+                <label>
+                  Full name
                 </label>
 
                 <input
-                  id="signup-name"
-                  type="text"
-                  placeholder="Enter your full name"
                   value={name}
-                  onChange={(event) => setName(event.target.value)}
+                  onChange={(event) =>
+                    setName(event.target.value)
+                  }
+                  required
                 />
 
               </div>
@@ -143,16 +132,17 @@ const Signup = () => {
 
               <div className="signup-field">
 
-                <label htmlFor="signup-email">
-                  Email Address
+                <label>
+                  Email address
                 </label>
 
                 <input
-                  id="signup-email"
                   type="email"
-                  placeholder="you@example.com"
                   value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) =>
+                    setEmail(event.target.value.trim())
+                  }
+                  required
                 />
 
               </div>
@@ -160,16 +150,17 @@ const Signup = () => {
 
               <div className="signup-field">
 
-                <label htmlFor="signup-password">
+                <label>
                   Password
                 </label>
 
                 <input
-                  id="signup-password"
                   type="password"
-                  placeholder="Create a password"
                   value={password}
-                  onChange={(event) => setPassword(event.target.value)}
+                  onChange={(event) =>
+                    setPassword(event.target.value)
+                  }
+                  required
                 />
 
               </div>
@@ -177,18 +168,17 @@ const Signup = () => {
 
               <div className="signup-field">
 
-                <label htmlFor="signup-confirm-password">
-                  Confirm Password
+                <label>
+                  Confirm password
                 </label>
 
                 <input
-                  id="signup-confirm-password"
                   type="password"
-                  placeholder="Confirm your password"
                   value={confirmPassword}
                   onChange={(event) =>
                     setConfirmPassword(event.target.value)
                   }
+                  required
                 />
 
               </div>
@@ -205,8 +195,7 @@ const Signup = () => {
                 />
 
                 <span>
-                  I understand that my account information
-                  will be securely stored by CropShield.
+                  I agree to the terms and conditions.
                 </span>
 
               </label>
@@ -224,16 +213,12 @@ const Signup = () => {
                 className="signup-submit-button"
                 disabled={loading}
               >
-                {loading ? "Creating Account..." : "Create Account"}
-                {!loading && <span>→</span>}
+                {loading
+                  ? "Creating account..."
+                  : "Create account"}
               </button>
 
             </form>
-
-
-            <div className="signup-divider">
-              <span>OR</span>
-            </div>
 
 
             <div className="signup-login-switch">
@@ -248,97 +233,6 @@ const Signup = () => {
 
             </div>
 
-
-            <p className="signup-demo-note">
-              Your account information is securely stored
-              in the CropShield database.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        {/* Right Side */}
-        <div className="signup-brand-side">
-
-          <Link
-            to="/"
-            className="signup-logo signup-brand-logo"
-          >
-            <span>🌱</span>
-            CropShield
-          </Link>
-
-
-          <div className="signup-brand-content">
-
-            <span className="signup-brand-label">
-              YOUR FARM. YOUR RECORDS.
-            </span>
-
-            <h2>
-              Keep your crop-loss
-              <span> history organized.</span>
-            </h2>
-
-            <p>
-              CropShield gives you a simple place to document
-              crop damage and keep important information together.
-            </p>
-
-
-            <div className="signup-preview">
-
-              <div className="signup-preview-header">
-                <span>YOUR FARM RECORD</span>
-
-                <span className="signup-preview-status">
-                  ACTIVE
-                </span>
-              </div>
-
-
-              <div className="signup-preview-main">
-
-                <div className="signup-preview-icon">
-                  🌾
-                </div>
-
-                <div>
-                  <strong>Crop-loss history</strong>
-                  <span>All your reports in one place</span>
-                </div>
-
-              </div>
-
-
-              <div className="signup-preview-stats">
-
-                <div>
-                  <strong>08</strong>
-                  <span>Reports</span>
-                </div>
-
-                <div>
-                  <strong>16</strong>
-                  <span>Evidence</span>
-                </div>
-
-                <div>
-                  <strong>3.4</strong>
-                  <span>Acres</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div className="signup-brand-footer">
-            CropShield · Farmer Crop-Loss Assistant
           </div>
 
         </div>
@@ -350,4 +244,3 @@ const Signup = () => {
 };
 
 export default Signup;
-

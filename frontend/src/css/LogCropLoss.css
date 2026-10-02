@@ -489,3 +489,154 @@
     width: 100%;
   }
 }
+
+/* =========================================
+   Log Crop Loss - Dark Mode
+========================================= */
+
+:root[data-theme="dark"] .log-loss-page {
+  background: #101712;
+}
+
+:root[data-theme="dark"] .log-loss-label {
+  color: #7fa98a;
+}
+
+:root[data-theme="dark"] .log-loss-header h1 {
+  color: #e8f2ea;
+}
+
+:root[data-theme="dark"] .log-loss-header p {
+  color: #9aa99e;
+}
+
+/* =========================================
+   Form Card
+========================================= */
+
+:root[data-theme="dark"] .form-card {
+  background: #18221b;
+  border-color: #2b382e;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"] .form-card-header {
+  border-bottom-color: #29362d;
+}
+
+:root[data-theme="dark"] .form-card-icon {
+  background: #22372a;
+}
+
+:root[data-theme="dark"] .form-card-header h2 {
+  color: #dceade;
+}
+
+:root[data-theme="dark"] .form-card-header p {
+  color: #899b8f;
+}
+
+/* =========================================
+   Form Fields
+========================================= */
+
+:root[data-theme="dark"] .form-field label {
+  color: #c9d8cd;
+}
+
+:root[data-theme="dark"] .form-field input,
+:root[data-theme="dark"] .form-field select,
+:root[data-theme="dark"] .form-field textarea {
+  border-color: #35443a;
+  background: #121a15;
+  color: #d5e2d8;
+}
+
+:root[data-theme="dark"] .form-field input::placeholder,
+:root[data-theme="dark"] .form-field textarea::placeholder {
+  color: #718078;
+}
+
+:root[data-theme="dark"] .form-field input:focus,
+:root[data-theme="dark"] .form-field select:focus,
+:root[data-theme="dark"] .form-field textarea:focus {
+  border-color: #6a9b73;
+  background: #18221b;
+  box-shadow: 0 0 0 3px rgba(106, 155, 115, 0.12);
+}
+
+:root[data-theme="dark"] .input-with-unit span {
+  color: #899b8f;
+}
+
+/* =========================================
+   Upload Area
+========================================= */
+
+:root[data-theme="dark"] .upload-area {
+  border-color: #405345;
+  background: #121a15;
+}
+
+:root[data-theme="dark"] .upload-icon {
+  background: #22372a;
+  color: #82a98b;
+}
+
+:root[data-theme="dark"] .upload-area h3 {
+  color: #c9d8cd;
+}
+
+:root[data-theme="dark"] .upload-area p {
+  color: #899b8f;
+}
+
+:root[data-theme="dark"] .upload-area > span {
+  color: #718078;
+}
+
+/* =========================================
+   Notice
+========================================= */
+
+:root[data-theme="dark"] .form-notice {
+  background: #1b2c20;
+  border-color: #304936;
+}
+
+:root[data-theme="dark"] .form-notice > span {
+  color: #78a981;
+}
+
+:root[data-theme="dark"] .form-notice p {
+  color: #93a69a;
+}
+
+:root[data-theme="dark"] .form-notice strong {
+  color: #a8c5ae;
+}
+
+/* =========================================
+   Buttons
+========================================= */
+
+:root[data-theme="dark"] .primary-button {
+  background: #3d7650;
+  border-color: #4b895d;
+}
+
+:root[data-theme="dark"] .primary-button:hover {
+  background: #4b895d;
+  border-color: #4b895d;
+}
+
+:root[data-theme="dark"] .secondary-button {
+  background: #18221b;
+  border-color: #35443a;
+  color: #a8c0ad;
+}
+
+:root[data-theme="dark"] .secondary-button:hover {
+  background: #22372a;
+  border-color: #4a6250;
+}
